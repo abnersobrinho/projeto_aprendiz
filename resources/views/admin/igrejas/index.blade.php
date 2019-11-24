@@ -24,7 +24,7 @@
 					<a href="#" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Imprimir"><i class="material-icons">print</i></a>
 				</div>
 
-				<div class="col-sm-8">
+				<div class="col-sm-8 d-none d-lg-block">
 	            <form class="form-row my-2 my-lg-0" align="right" action="{{ route('igreja.buscar')}}" method="post" enctype="multipart/form-data">
 	            	{{ csrf_field()}}
 	                <input class="form-control col-md-4 mr-sm-2" type="search" name="nome" placeholder="Nome da igreja..." aria-label="Pesquisar">

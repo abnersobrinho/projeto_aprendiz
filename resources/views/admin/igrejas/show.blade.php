@@ -13,24 +13,28 @@
             <div class="col-sm-10"><span><b>{{$registro->id}}</b></span></div>  
         </div>
         <div class="row">
-            <label class="col-sm-2 control-label">Título</label>
-            <div class="col-sm-10"><span><b>{{$registro->titulo}}</b></span></div>  
+            <label class="col-sm-2 control-label">Nome</label>
+            <div class="col-sm-10"><span><b>{{$registro->nome}}</b></span></div>  
         </div>
         <div class="row">
-            <label class="col-sm-2 control-label">Descrição</label>
-            <div class="col-sm-10"><span><b>{{$registro->descricao}}</b></span></div>  
+            <label class="col-sm-2 control-label">Área</label>
+            <div class="col-sm-10"><span><b>{{$registro->area}}</b></span></div>  
         </div>
         <div class="row">
-            <label class="col-sm-2 control-label">Data</label>
-            <div class="col-sm-10"><span><b>{{$registro->data}}</b></span></div>  
+            <label class="col-sm-2 control-label">Endereço</label>
+            <div class="col-sm-10"><span><b>{{$registro->endereco}}</b></span></div>  
         </div>
         <div class="row">
-            <label class="col-sm-2 control-label">Hora</label>
-            <div class="col-sm-10"><span><b>{{$registro->hora}}</b></span></div>  
+            <label class="col-sm-2 control-label">Cidade</label>
+            <div class="col-sm-10"><span><b>{{$registro->cidade->nome}}</b></span></div>  
+        </div>
+        <div class="row">
+            <label class="col-sm-2 control-label">Bairro</label>
+            <div class="col-sm-10"><span><b>{{$registro->bairro}}</b></span></div>
         </div>
         <div class="row">
             <label class="col-sm-2 control-label">Local</label>
-            <div class="col-sm-10"><span><b>{{$registro->local}}</b></span></div>  
+            <div class="col-sm-10"><img src="{{asset($registro->imagem)}}"></div>
         </div>
     </div> 
        
