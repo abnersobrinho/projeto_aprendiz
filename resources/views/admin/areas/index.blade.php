@@ -24,13 +24,13 @@
 					<a href="#" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Imprimir"><i class="material-icons">print</i></a>
 				</div>
 
-				<div class="col-sm-8">
-	            <form class="form-row my-2 my-lg-0" align="right" action="{{ route('area.buscar')}}" method="post">
-	            	{{ csrf_field()}}
-	                <input class="form-control col-md-6 mr-sm-2" type="search" name="titulo" placeholder="Pesquisar por área..." aria-label="Pesquisar">
-	                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ok</button>
-	            </form>
-	        </div>
+				<div class="col-sm-8 d-none d-lg-block">
+		            <form class="form-row my-2 my-lg-0" align="right" action="{{ route('area.buscar')}}" method="post">
+		            	{{ csrf_field()}}
+		                <input class="form-control col-md-6 mr-sm-2" type="search" name="titulo" placeholder="Pesquisar por área..." aria-label="Pesquisar">
+		                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ok</button>
+		            </form>
+	        	</div>
 			</div>
 		</div>
 
@@ -38,7 +38,7 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th class="hide-on-med-and-down">Id</th>
+					<th class="d-none d-lg-block">Id</th>
 					<th>Título</th>
 					<th>Ação</th>
 				</tr>
@@ -46,7 +46,7 @@
 			<tbody>
 				@foreach($registros as $registro)
 				<tr>
-					<td class="hide-on-med-and-down">{{ $registro->id }}</td>
+					<td class="d-none d-lg-block">{{ $registro->id }}</td>
 					<td>{{ $registro->titulo }}</td>
 					<td>
 						<a class="tooltipped" data-position="bottom" data-tooltip="Editar registro" href="{{ route('area.edit', $registro->id) }}"><i class="material-icons">edit</i></a>

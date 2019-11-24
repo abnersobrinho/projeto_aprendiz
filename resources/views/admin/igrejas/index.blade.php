@@ -45,7 +45,7 @@
 						<th class="d-none d-lg-block">Área</th>
 						<th class="d-none d-lg-block">Endereço</th>
 						<th>Cidade</th>
-						<th>Bairro</th>
+						<th class="d-none d-lg-block">Bairro</th>
 						<th class="d-none d-lg-block">Imagem</th>
 						<th>Ação</th>
 					</tr>
@@ -55,11 +55,11 @@
 					<tr>
 						<td class="hide-on-med-and-down">{{ $registro->id }}</td>
 						<td>{{ $registro->nome }}</td>
-						<td>{{ $registro->area->titulo }}</td>
-						<td>{{ $registro->endereco }}</td>
+						<td class="d-none d-lg-block">{{ $registro->area->titulo }}</td>
+						<td class="d-none d-lg-block">{{ $registro->endereco }}</td>
 						<td>{{ $registro->cidade->nome }}</td>
-						<td>{{ $registro->bairro }}</td>
-						<td><img width="100" src="{{ asset($registro->imagem) }}"></td>
+						<td class="d-none d-lg-block">{{ $registro->bairro }}</td>
+						<td class="d-none d-lg-block"><img width="100" src="{{ asset($registro->imagem) }}"></td>
 						<td>
 							<a class="tooltipped" data-position="bottom" data-tooltip="Editar registro" href="{{ route('igreja.edit', $registro->id) }}"><i class="material-icons">edit</i></a>
 

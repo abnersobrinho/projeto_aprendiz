@@ -18,9 +18,9 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th class="hide-on-med-and-down">Id</th>
+					<th class="d-none d-lg-block">Id</th>
 					<th>Nome</th>
-					<th>CPF</th>
+					<th class="d-none d-lg-block">CPF</th>
 					<th>E-mail</th>
 					<th>Ação</th>
 				</tr>
@@ -28,9 +28,9 @@
 			<tbody>
 				@foreach($registros as $registro)
 				<tr>
-					<td class="hide-on-med-and-down">{{ $registro->id }}</td>
+					<td class="d-none d-lg-block">{{ $registro->id }}</td>
 					<td>{{ $registro->nome }}</td>
-					<td>{{ $registro->cpf }}</td>
+					<td class="d-none d-lg-block">{{ $registro->cpf }}</td>
 					<td>{{ $registro->email }}</td>
 					<td>
 						@can('update', App\Usuario::class)
