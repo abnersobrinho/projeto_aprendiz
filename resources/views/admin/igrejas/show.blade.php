@@ -18,7 +18,7 @@
         </div>
         <div class="row">
             <label class="col-sm-2 control-label">Área</label>
-            <div class="col-sm-10"><span><b>{{$registro->area}}</b></span></div>  
+            <div class="col-sm-10"><span><b>{{$registro->area->titulo}}</b></span></div>  
         </div>
         <div class="row">
             <label class="col-sm-2 control-label">Endereço</label>
@@ -34,7 +34,7 @@
         </div>
         <div class="row">
             <label class="col-sm-2 control-label">Local</label>
-            <div class="col-sm-10"><img src="{{asset($registro->imagem)}}"></div>
+            <div class="col-sm-10">{{$registro->local)}}</div>
         </div>
     </div> 
        
