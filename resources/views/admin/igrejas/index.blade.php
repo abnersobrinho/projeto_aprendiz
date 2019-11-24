@@ -40,13 +40,13 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th class="hide-on-med-and-down">Id</th>
+						<th class="d-none d-lg-block">Id</th>
 						<th>Nome</th>
-						<th class="hide-on-med-and-down">Área</th>
-						<th class="hide-on-med-and-down">Endereço</th>
+						<th class="d-none d-lg-block">Área</th>
+						<th class="d-none d-lg-block">Endereço</th>
 						<th>Cidade</th>
 						<th>Bairro</th>
-						<th class="hide-on-med-and-down">Imagem</th>
+						<th class="d-none d-lg-block">Imagem</th>
 						<th>Ação</th>
 					</tr>
 				</thead>
