@@ -15,12 +15,12 @@ class CidadeSeeder extends Seeder
         if(Cidade::where('nome','=','GOVERNADOR VALADARES')->count()){
             $cidade = Cidade::where('nome','=','GOVERNADOR VALADARES')->first();
         	$cidade->nome = "GOVERNADOR VALADARES";
-        	$cidade->UF = "MG";
+        	$cidade->uf = "MG";
         	$cidade->save();        
     	}else{
             $cidade = new Cidade();
         	$cidade->nome = "GOVERNADOR VALADARES";
-        	$cidade->UF = "MG";
+        	$cidade->uf = "MG";
         	$cidade->save(); 
     	}
     }
