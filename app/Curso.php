@@ -7,24 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 class Curso extends Model
 {
    	protected $fillable = [
-      "titulo",
-      "descricao",
-      "logo",
-      "imagem",
-      "informacoes"
+        "titulo",
+        "descricao",
+        "imagem",
+        "publico",
+        "informacoes",
+        "publicar",
+        "visualizacoes"
     ];
-	
+
     protected $table = "cursos";
 
-    public function buscar(Array $data, $totalPage)
+    public function turmas()
     {
-        return $this->where(function ($query) use ($data){
-            if (isset($data['titulo']))
-                $query->where('titulo', 'LIKE', '%' .$data['titulo']. '%');
-            if (isset($data['descricao']))
-                $query->where('descricao', 'LIKE', '%' .$data['descricao']. '%');
+        return $this->hasMany('App\Turma','curso_id');
+    }
 
-        })//->toSql(); dd($teste);
-        ->paginate($totalPage);
+    public function files()
+    {
+        return $this->hasMany('App\File','curso_id');
     }
 }

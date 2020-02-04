@@ -1,22 +1,22 @@
-@extends('layouts.adm')
+@extends('layouts.admin.adm')
 
 @include('layouts._nav')
 
 @section('page_title', 'Editar Função')
 
 @section('content')
-<form action="{{ route('role.update', $registro->id) }}" method="put">
-{{ csrf_field() }}
+<ol class="breadcrumb">
+	<li class="breadcrumb-item"><a href="{{route('dashboard') }}">Dashboard</a></li>
+	<li class="breadcrumb-item"><a href="{{ route('role.index') }}">Lista de cidades</a></li>
+	<li class="breadcrumb-item active" aria-current="page">Adicionar</li>
+</ol>
 
-<div class="container">
-	<nav aria-label="breadcrumb">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="{{route('dashboard') }}">Dashboard</a></li>
-			<li class="breadcrumb-item"><a href="{{ route('role.index') }}">Lista de funções</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Adicionar</li>
-		</ol>
-	</nav>
+<form class="needs-validation" novalidate action="{{ route('role.update', $registro->id) }}" method="put">
+{{ csrf_field() }}
 	<div class="card card-default">
+		<div class="card-header">
+			<h4><i class="fas fa-file-signature"></i>  @yield('page_title')</h4>
+		</div>
 		<div class="card-body">
 			@include('admin.roles._form')	
 		</div>			

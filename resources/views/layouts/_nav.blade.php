@@ -1,53 +1,74 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href=" {{ route('index') }}">Projeto Aprendiz</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ route('index')}}">ProjetoAPRENDIZ</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Alterna navigation"><span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-        <ul class="navbar-nav mr-auto">
-            @if(Auth::check())
+        <div class="collapse navbar-collapse" id="navbars">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                @if(Auth::check())
                 <li class="nav-item active">
-                    <div class="dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Olá, {{ Auth::user()->nome }}</a>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <!-- todos os usuários -->
-                            <a class="dropdown-item" href="{{ route('usuario.index') }}"><i class="material-icons bg-blue">person_outline</i>  Meu perfil</a>
-                            
-                            <a class="dropdown-item" href="{{ route('dashboard') }}"><i class="material-icons">dashboard</i>  Dashboard</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"><i class="material-icons">meeting_room</i>  Sair</a>
-                            
-                        @can('update', App\Usuario::class)
-                        <hr>
-                            <!-- monitores -->
-                            <a class="dropdown-item" href="{{ route('evento.index') }}"><i class="material-icons">event</i>  Evento</a>
-
-                            <a class="dropdown-item" href="#"><i class="material-icons">group</i>  Turmas</a>
-                        <hr>
-                            <!-- coordenadores -->
-                            <a class="dropdown-item" href="{{ route('igreja.index') }}"><i class="material-icons">house</i>  Igreja</a>
-                            <a class="dropdown-item" href="#"><i class="material-icons">person</i>  Pastor</a>
-                            <a class="dropdown-item" href="{{ route('curso.index') }}"><i class="material-icons">book</i>  Curso</a>
-                        <hr>
-
-                            <!-- administradores -->
-                            <a class="dropdown-item" href="{{ route('role.index') }}"><i class="material-icons">storage</i>  Função</a>
-                            <a class="dropdown-item" href="{{ route('cidade.index') }}"><i class="material-icons">business</i>  Cidade</a>
-                            <a class="dropdown-item" href="{{ route('area.index') }}"><i class="material-icons">tab</i>  Área</a>
-                            <a class="dropdown-item" href="#"><i class="material-icons">build</i>  Configurações</a>
-                        @endcan
-
-                        </div>
+                    <a class="nav-link" href="{{ url('/home') }}">Home <span class="sr-only">(Página atual)</span></a>   
+                </li>
+                <li class="nav-item dropdown no-arrow mx-1">
+                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-bell fa-fw"></i>
+                    <span class="badge badge-danger">9+</span></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+                        <a class="dropdown-item" href="#">Ação</a>
+                        <a class="dropdown-item" href="#">Anotar ação</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Algo mais aqui</a>
                     </div>
-                </li>                
-            @else
-                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>    
-            @endif
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-        </form>
+                </li>
+
+                <li class="nav-item dropdown no-arrow mx-1">
+                    <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-envelope fa-fw"></i>
+                    <span class="badge badge-danger">7</span></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-circle fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="{{ route('usuario.edit', auth()->user()->id )}}">{{ auth()->user()->nome }}</a>
+                        <a class="dropdown-item" href="#">Log de atividade</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+                    </div>
+                </li>
+                @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login')}}">Login</a> 
+                </li>
+                @endif
+            </ul>
+        </div>
     </div>
 </nav>
+
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pronto pra sair?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">Selecione "Logout" abaixo se você estiver pronto para encerrar sua sessão atual.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <a class="btn btn-primary" href="{{ route('logout')}}">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>

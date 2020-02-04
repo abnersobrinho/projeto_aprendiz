@@ -48,4 +48,11 @@ class Igreja extends Model
     {
     	return $this->hasMany('App\Usuario','igreja_id');
     }
+
+    public function pastores()
+    {
+        return $this->belongsToMany('App\Usuario','igreja_pastor', 'igreja_id', 'pastor_id')
+                    ->withPivot('de', 'ate')
+                    ->withTimestamps();
+    }
 }

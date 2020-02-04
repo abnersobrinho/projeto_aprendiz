@@ -11,7 +11,7 @@ use Validator;
 
 class EventoController extends Controller
 {
-    private $totalPage = 5;
+    private $totalPage = 10;
 
     public function index(Request $request)
     {
@@ -36,7 +36,7 @@ class EventoController extends Controller
 
     public function store(Request $request)
     {
-        $this->authorize('update', Evento::class);
+       // $this->authorize('update', Evento::class);
 
         $dados = $request->all();
 
@@ -80,7 +80,7 @@ class EventoController extends Controller
 
     public function show($id)
     {
-        $this->authorize('update', Evento::class);
+     //   $this->authorize('update', Evento::class);
 
         $cidade = Cidade::all();
 
@@ -93,7 +93,7 @@ class EventoController extends Controller
 
     public function edit($id)
     {
-        $this->authorize('update', Evento::class);
+    //    $this->authorize('update', Evento::class);
 
         $cidades = Cidade::all();
                 
@@ -103,7 +103,7 @@ class EventoController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->authorize('update', Evento::class);
+    //    $this->authorize('update', Evento::class);
 
         $dados = $request->all();
         $registro = Evento::find($id);

@@ -10,12 +10,11 @@ use App\Igreja;
 
 class CidadeController extends Controller
 {
-    private $totalPage = 5;
 
     public function index(Request $request)
     {
 
-        $registros = Cidade::paginate($this->totalPage);
+        $registros = Cidade::all();
         return view('admin.cidades.index', compact('registros'));
     }
 
@@ -29,11 +28,6 @@ class CidadeController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $this->authorize('update', Cidade::class);
@@ -52,10 +46,11 @@ class CidadeController extends Controller
         $registro = Cidade::create($dados);
 
         if($registro){
-            \Session::flash('mensagem', ['msg'=>'Registro criado com sucesso!', 'class'=>'alert alert-success']); 
-            return redirect()->route('cidade.index');
-        }else{
-            \Session::flash('mensagem', ['msg'=>'Não foi possível criar o registro!', 'class'=>'alert alert-danger']);
+            \Session::flash('mensagem', ['msg'=>'Registro criado com sucesso!', 'class'=>'alert alert-success alert-dismissible fade show']); 
+                return redirect()->route('cidade.index');
+            }else{
+                \Session::flash('mensagem', ['msg'=>'Não foi possível criar o registro!', 'class'=>'alert alert-danger alert-dismissible fade show']);
+                return redirect()->route('cidade.index');
         }
     }
 
@@ -103,14 +98,13 @@ class CidadeController extends Controller
      
         $update = $registro->update($dados);
 
-        if($update){
-            \Session::flash('mensagem', ['msg'=>'Registro atualizado com sucesso!', 'class'=>'alert alert-success']); 
-            return redirect()->route('cidade.index');
-        }else{
-            \Session::flash('mensagem', ['msg'=>'Falha ao editar registro!', 'class'=>'alert alert-danger']); 
-            return redirect()->route('cidade.edit');
-        }
-    }
+        if($registro){
+            \Session::flash('mensagem', ['msg'=>'Registro atualizado com sucesso!', 'class'=>'alert alert-success alert-dismissible fade show']); 
+                return redirect()->route('cidade.index');
+            }else{
+                \Session::flash('mensagem', ['msg'=>'Não foi possível atualizar o registro!', 'class'=>'alert alert-danger alert-dismissible fade show']);
+                return redirect()->route('cidade.edit');
+        }    }
 
     /**
      * Remove the specified resource from storage.

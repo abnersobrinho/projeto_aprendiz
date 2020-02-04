@@ -10,7 +10,7 @@ use Validator;
 
 class RoleController extends Controller
 {
-    private $totalPage = 5;
+    private $totalPage = 10;
 
     protected function validarRole($request)
     {

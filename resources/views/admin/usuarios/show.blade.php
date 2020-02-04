@@ -1,13 +1,15 @@
-@extends('layouts.adm')
-
-@include('layouts._nav')
+@extends('layouts.admin.adm')
 
 @section('page_title', 'Dados do Usuário')
 
+@include('layouts._nav')
+
 @section('content')
 
-<div class="container">
-<div class="card card-default">
+<div class="card card-default mb-3">
+    <div class="card-header">
+        <h4><i class="fas fa-users"></i>  @yield('page_title')</h4>
+    </div>
     <div class="card-body">
         <div class="row">
             <label class="col-sm-2 control-label">Código</label>
@@ -15,16 +17,15 @@
             <label class="col-sm-2 control-label">CPF</label>
             <div class="col-sm-4"><span><b>{{$registro->cpf}}</b></span></div>  
         </div>
-        <hr>
         <div class="row">
             <label class="col-sm-2 control-label">Nome</label>
             <div class="col-sm-10"><span><b>{{$registro->nome}}</b></span></div>  
         </div>
           <div class="row">
             <label class="col-sm-2 control-label">Tipo</label>
-            <div class="col-sm-4"><span><b>{{$registro->role_id}}</b></span></div>  
+            <div class="col-sm-4"><span><b>{{$registro->role->descricao}}</b></span></div>  
             <label class="col-sm-2 control-label">Igreja</label>
-            <div class="col-sm-4"><span><b>{{$registro->igreja_id}}</b></span></div>  
+            <div class="col-sm-4"><span><b>{{$registro->igreja->nome}}</b></span></div>  
         </div>
 
         <div class="row">
@@ -43,7 +44,7 @@
         </div>
         <div class="row">
             <label class="col-sm-2 control-label">Cidade</label>
-            <div class="col-sm-10"><span><b>{{$registro->cidade_id}}</b></span></div>  
+            <div class="col-sm-10"><span><b>{{$registro->cidade->nome}}</b></span></div>  
         </div>
 
         <div class="row">
@@ -69,7 +70,6 @@
         <a class="btn btn-secondary" href="{{ route('usuario.index') }}">Voltar</a> 
     </div>
   
-</div>
 </div>
 
 @endsection

@@ -1,8 +1,8 @@
 <div class="input-field">				
 	<div class="form-group row">
-		<label for="nome" class="col-sm-3 control-label"><b>Nome</b></label>
-		<div class="col-sm-9">
-			<input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value="{{ isset($registro->nome) ? $registro->nome : ''}}" onkeyup="maiuscula(this)" required>
+		<label for="nome" class="col-sm-2 control-label"><b>Nome</b></label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" name="nome" id="nome" value="{{ isset($registro->nome) ? $registro->nome : ''}}" onkeyup="maiuscula(this)" required autofocus autocomplete="nome">
 			<div class="invalid-feedback">
 				Por favor, informe o nome da cidade
 			</div>
@@ -12,10 +12,10 @@
 
 <div class="input-field">
 	<div class="form-group row">
-		<label for="uf" class="col-sm-3 control-label"><b>Estado</b></label>
-		<div class="col-sm-9">
+		<label for="uf" class="col-sm-2 control-label"><b>Estado</b></label>
+		<div class="col-sm-5">
 			<select name="uf" class="form-control" required>
-				<option value="" disabled selected>Selecione...</option>
+				<option value="" disabled selected>Selecione o estado...</option>
 				<option value="AC" {{(isset($registro->uf) && $registro->uf == 'AC' ? 'selected' : '')}}>AC</option>
 				<option value="AL" {{(isset($registro->uf) && $registro->uf == 'AL' ? 'selected' : '')}}>AL</option>
 				<option value="AM" {{(isset($registro->uf) && $registro->uf == 'AM' ? 'selected' : '')}}>AM</option>

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Usuario extends Authenticatable
@@ -16,28 +17,37 @@ class Usuario extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nome', 'cpf', 'email', 'senha', 'endereco', 'bairro', 'tel_fixo', 
-        'celular', 'responsavel', 'dtnasc', 'idade'
+        'termos',
+        'nomecompleto',
+        'nome',
+        'email',
+        'celular',
+        'cpf',
+        'endereco',
+        'sexo',
+        'cidade_id',
+        'bairro',
+        'tel_fixo',
+        'igreja_id',
+        'dtnasc',
+        'responsavel',
+        'avatar',
+        'senha',
+        'sobre',
+        'idade',
+        'ativo',
+        'toca',
+        'role_id'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'senha', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
 
     public function cidade()
     {
@@ -59,4 +69,28 @@ class Usuario extends Authenticatable
         return $this->hasMany('App\Evento','usuario_id');
     }
 
+    public function instrumento()
+    {
+        return $this->belongsTo('App\Instrumento','instrumento_id');
+    }
+
+    public function cursos()
+    {
+        return $this->belongsToMany('App\Cursos','curso_monitor', 'curso_id', 'monitor_id');
+    }
+
+    public function igrejas()
+    {
+        return $this->belongsToMany('App\Igreja','igreja_pastor', 'igreja_id', 'pastor_id');
+    }
+
+    public function turmas()
+    {
+        return $this->hasMany('App\Turma','usuario_id');
+    }
+
+    public function files()
+    {
+        return $this->hasMany('App\File','usuario_id');
+    }
 }

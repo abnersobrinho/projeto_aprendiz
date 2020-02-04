@@ -17,7 +17,8 @@ class UsuarioPolicy
      */
     public function viewAny(Usuario $user)
     {
-        //
+        return $user->role_id === 1; //admin
+        return $user->role_id === 4; //admin
     }
 
     /**
@@ -55,7 +56,7 @@ class UsuarioPolicy
      */
     public function update(Usuario $user)
     {
-        return $user->role_id === 1; //admin
+        //
     }
 
     /**
@@ -67,7 +68,7 @@ class UsuarioPolicy
      */
     public function delete(Usuario $user, Usuario $usuario)
     {
-        //
+        return $user->role_id === 1; //admin
     }
 
     /**

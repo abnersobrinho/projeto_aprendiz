@@ -1,22 +1,24 @@
-@extends('layouts.adm')
-
-@include('layouts._nav')
+@extends('layouts.admin.adm')
 
 @section('page_title', 'Editar Área')
 
-@section('content')
-<form class="needs-validation" novalidate action="{{ route('area.update', $registro->id) }}" method="put">
-{{ csrf_field() }}
+@include('layouts._nav')
 
-<div class="container">
-	<nav aria-label="breadcrumb">
+@section('content')
+
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="{{route('dashboard') }}">Dashboard</a></li>
-			<li class="breadcrumb-item"><a href="{{ route('area.index') }}">Lista de cidades</a></li>
+			<li class="breadcrumb-item"><a href="{{ route('area.index') }}">Lista de áreas</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Adicionar</li>
 		</ol>
-	</nav>
+
+
+<form class="needs-validation" novalidate action="{{ route('area.update', $registro->id) }}" method="put">
+{{ csrf_field() }}
 	<div class="card card-default">
+		<div class="card-header">
+			<h4><i class="fas fa-table"></i>  @yield('page_title')</h4>
+		</div>
 		<div class="card-body">
 			@include('admin.areas._form')	
 		</div>			

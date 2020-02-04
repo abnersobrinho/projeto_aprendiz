@@ -13,7 +13,7 @@ use App\Usuario;
 
 class IgrejaController extends Controller
 {
-    private $totalPage = 5;
+    private $totalPage = 10;
 
     //função para dar ou nao permissao de acesso
     public function __construct()
@@ -52,8 +52,10 @@ class IgrejaController extends Controller
 
         $cidades = Cidade::all();
         $areas = Area::all();
+        $pastores = Usuario::where('role_id', '=', 5)->get();
 
-        return view('admin.igrejas.create', compact('cidades', 'areas'));
+
+        return view('admin.igrejas.create', compact('cidades', 'areas', 'pastores'));
     }
 
     /**
@@ -79,7 +81,7 @@ class IgrejaController extends Controller
         $file = $request->file('imagem');
         if($file){
             $rand = rand(11111,99999);
-            $diretorio = "img/igrejas/".str_slug($dados['nome'],'_');
+            $diretorio = "img/igrejas/".str_slug($dados['imagem'],'_');
             $ext = $file->guessClientExtension();
             $nomeArquivo = "_img_".$rand.".".$ext;
             $file->move($diretorio,$nomeArquivo);
@@ -93,6 +95,9 @@ class IgrejaController extends Controller
         } 
 
         $registro->save();
+
+        $registro = Igreja::find($registro->id);
+        $registro->pastores()->attach($dados['pastor_id'], ['de'=>$dados['de'], 'ate'=>$dados['ate']]);
 
         if($registro){
             \Session::flash('mensagem', ['msg'=>'Registro criado com sucesso!', 'class'=>'alert alert-success']); 
@@ -134,7 +139,8 @@ class IgrejaController extends Controller
         $areas = Area::all();
                 
         $registro = Igreja::find($id);
-        return view('admin.igrejas.edit', compact('registro', 'cidades', 'areas'));
+        $pastores = Usuario::where('role_id', '=', 5)->get();
+        return view('admin.igrejas.edit', compact('registro', 'cidades', 'areas', 'pastores'));
     }
 
 
@@ -163,7 +169,7 @@ class IgrejaController extends Controller
         $file = $request->file('imagem');
         if($file){
             $rand = rand(11111,99999);
-            $diretorio = "img/igrejas/".str_slug($dados['nome'],'_');
+            $diretorio = "img/igrejas/".str_slug($dados['imagem'],'_');
             $ext = $file->guessClientExtension();
             $nomeArquivo = "_img_".$rand.".".$ext;
             $file->move($diretorio,$nomeArquivo);
@@ -177,6 +183,8 @@ class IgrejaController extends Controller
         } 
      
         $update = $registro->update($dados);
+
+        $registro->pastores()->sync($dados['pastor_id']);
 
         if($update){
             \Session::flash('mensagem', ['msg'=>'Registro atualizado com sucesso!', 'class'=>'alert alert-success']); 

@@ -17,6 +17,7 @@ class CreateCidadesTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome', 100);
             $table->string('uf', 2);
+            $table->enum('mostrar', ['s', 'n'])->default('s');
             $table->timestamps();
         });
     }

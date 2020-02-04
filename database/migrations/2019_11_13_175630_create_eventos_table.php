@@ -31,7 +31,7 @@ class CreateEventosTable extends Migration
             $table->string('bairro');
             $table->string('imagem')->nullable();
             $table->text('mapa')->nullable();
-            $table->enum('publicar', ['sim', 'nao'])->default('nao');
+            $table->enum('publicar', ['s', 'n'])->default('n');
 
 
             $table->timestamps();

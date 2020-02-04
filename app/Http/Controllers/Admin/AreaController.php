@@ -8,10 +8,8 @@ use App\Area;
 
 class AreaController extends Controller
 {
-    private $totalPage = 5;
-
     public function index() {
-        $registros = Area::paginate($this->totalPage);
+        $registros = Area::all();
         return view('admin.areas.index', compact('registros'));
     }
 

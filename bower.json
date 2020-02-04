@@ -1,0 +1,21 @@
+{
+  "name": "autenticacao",
+  "description": "",
+  "main": "",
+  "authors": [
+    "abner <sobrinho108@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-file-upload": "^10.7.0"
+  }
+}

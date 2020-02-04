@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://projaprendizb.herokuapp.com/'),
+    'url' => env('APP_URL', 'localhost'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Sao_Paulo',
 
     /*
     |--------------------------------------------------------------------------

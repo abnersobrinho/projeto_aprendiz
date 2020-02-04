@@ -1,64 +1,89 @@
-@extends('layouts.app')
+@extends('layouts.admin.adm')
 
 @include('layouts._nav')
 
 @section('content')
 
-<div id="slide" class="carousel slide carousel-fade" data-ride="carousel">
-	<div class="carousel-inner">
-		<div class="carousel-item active">
-			@if(isset($evento->imagem))
-				<img class="d-block w-100" height="400px" src="{{ asset($evento->imagem) }}" alt="Primeiro Slide">
-			@else
-				<img class="d-block w-100" height="400px" src="{{ asset('/img/logo.png') }}" alt="Primeiro Slide">
-			@endif
-			<div class="carousel-caption d-none d-md-block">
-				@if(isset($evento->titulo))
-					<h1 class="display-1"> {{ $evento->titulo }} </h1>
-				@endif
-				@if(isset($evento->descricao))
-					<h2><p class="card-text">{{ $evento->descricao }}</p></h2>
-				@endif
-				<a href="#" class="btn btn-primary">Saiba mais...</a>
-			</div>
-		</div>
-		<div class="carousel-item">
-			<img class="d-block w-100" height="400px" src="{{ asset('/img/logo_50_anos.jpg') }}" alt="Primeiro Slide">
-			<div class="carousel-caption d-none d-md-block">
-				<h1 class="display-1"></h1>
-				<h2><p class="card-text"></p></h2>
-				<a href="#"></a>
-			</div>
-		</div>
-	</div>
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Painel de controle</li>
+</ol>
+
+<!-- Icon Cards ************************************************************-->
+<div class="row">
+    <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card-body">
+                <div class="card-body-icon">
+                    <i class="fas fa-fw fa-comments"></i>
+                </div>
+                <div class="mr-5">26 New Messages!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="#">
+                <span class="float-left">View Details</span>
+                <span class="float-right"><i class="fas fa-angle-right"></i></span>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-warning o-hidden h-100">
+            <div class="card-body">
+                <div class="card-body-icon">
+                    <i class="fas fa-fw fa-list"></i>
+                </div>
+                <div class="mr-5">11 New Tasks!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="#">
+                <span class="float-left">View Details</span>
+                <span class="float-right"><i class="fas fa-angle-right"></i></span>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-success o-hidden h-100">
+            <div class="card-body">
+                <div class="card-body-icon">
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                </div>
+                <div class="mr-5">123 New Orders!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="#">
+                <span class="float-left">View Details</span>
+                <span class="float-right"><i class="fas fa-angle-right"></i></span>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-sm-6 mb-3">
+        <div class="card text-white bg-danger o-hidden h-100">
+            <div class="card-body">
+                <div class="card-body-icon">
+                    <i class="fas fa-fw fa-life-ring"></i>
+                </div>
+                <div class="mr-5">13 New Tickets!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="#">
+                <span class="float-left">View Details</span>
+                <span class="float-right"><i class="fas fa-angle-right"></i></span>
+            </a>
+        </div>
+    </div>
 </div>
 
-<div class="card-content">
-	<div class="card-body">
-	<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-		<li class="nav-item">
-			<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#turmas" role="tab" aria-controls="pills-home" aria-selected="true">Turmas</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#graficos" role="tab" aria-controls="pills-home" aria-selected="false">Gráficos</a>
-		</li>
-	</ul>
-
-	<div class="tab-content" id="myTabContent">				
-		<div class="tab-pane fade" id="turmas" role="tabpanel" aria-labelledby="profile-tab">
-			<p>
-				Duis id metus enim, sed dignissim magna. Quisque dapibus pulvinar diam eget adipiscing. Ut aliquet ipsum quis lorem elementum lacinia. Vestibulum feugiat ultrices orci, vel sollicitudin nibh rutrum eu. In gravida tincidunt ornare. Aenean vestibulum leo eu orci egestas semper. Proin euismod dapibus tempor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse rutrum purus eget lectus ultricies a consectetur ante laoreet. Phasellus ullamcorper gravida risus vitae convallis. Curabitur ante lorem, faucibus in tincidunt quis, ullamcorper at lectus. Fusce fermentum blandit varius. Donec a quam id massa bibendum commodo sit amet vel felis. Sed magna nibh, convallis nec dignissim non, vestibulum adipiscing ipsum. Mauris cursus fringilla tortor eu feugiat. Vivamus vestibulum dapibus justo, porttitor luctus nisi posuere at. Nunc mi elit, suscipit id venenatis at, suscipit nec purus. Donec malesuada fringilla tempor. Pellentesque vehicula diam a magna commodo sagittis. Nulla facilisi. 
-			</p>
-		</div>
-
-		<div class="tab-pane fade" id="graficos" role="tabpanel" aria-labelledby="contact-tab">
-	 		<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin augue erat, ullamcorper pulvinar malesuada ultricies, mollis non magna. Curabitur quis nisi ut ligula ultricies gravida. Suspendisse elit justo, vulputate in facilisis sed, tristique id nisi. Maecenas risus quam, suscipit eu vehicula ut, ultricies in neque. Donec gravida tristique turpis ut interdum. Donec lacinia nisi id enim lacinia sit amet facilisis est ullamcorper. Curabitur ipsum libero, sollicitudin nec rhoncus quis, congue non ipsum. Etiam at eros dolor. Mauris non erat vitae leo faucibus fermentum. In consectetur, diam eget faucibus dignissim, urna justo pretium dui, nec eleifend neque velit vitae odio. Nam et tristique turpis. In dictum commodo sem ut dignissim. In convallis quam non tortor posuere sed ornare nulla pulvinar. Suspendisse placerat turpis in tortor rutrum nec mollis nulla posuere. Integer tellus est, rhoncus ut sagittis eget, mattis a velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque gravida posuere orci nec ornare. Donec elit nulla, aliquam eget cursus a, commodo sed odio.
-			</p>
-		</div>
-	</div>
-	</div>
+<!-- Area Chart Example ************************************************-->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-chart-area"></i>Area Chart Example
+    </div>
+    <div class="card-body">
+        <canvas id="myAreaChart" width="100%" height="30"></canvas>
+    </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
 </div>
+
 
 @endsection
 

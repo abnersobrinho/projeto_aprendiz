@@ -25,3 +25,14 @@ class CidadeSeeder extends Seeder
     	}
     }
 }
+
+/*Para criar varios registros
+
+$i = 0;
+while($i < 10)
+{
+    colocar a rotina aqui dentro e no final implementar i
+    se quiser pode-se usar a biblioteca faker
+
+    $i++;
+}

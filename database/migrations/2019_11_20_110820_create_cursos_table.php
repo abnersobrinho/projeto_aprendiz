@@ -17,9 +17,11 @@ class CreateCursosTable extends Migration
             $table->bigIncrements('id');
             $table->string('titulo', 30);
             $table->string('descricao', 255);
-            $table->string('logo');
-            $table->string('imagem');
-            $table->longText('informacoes');
+            $table->string('imagem', 255)->nullable();
+            $table->string('publico', 255)->nullable();
+            $table->longText('informacoes')->nullable();
+            $table->enum('publicar', ['s', 'n'])->default('n');
+            $table->bigInteger('visualizacoes')->default(0);
             $table->timestamps();
         });
     }

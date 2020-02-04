@@ -18,6 +18,7 @@ class CreateIgrejasTable extends Migration
             $table->string('nome', 50);
             $table->string('cep', 9);
             $table->string('endereco', 100);
+            $table->enum('mostrar', ['s', 'n'])->default('s');
 
             $table->bigInteger('cidade_id')->unsigned();
             $table->foreign('cidade_id')->references('id')->on('cidades');

@@ -1,4 +1,4 @@
-@extends('layouts.adm')
+@extends('layouts.admin.adm')
 
 @include('layouts._nav')
 

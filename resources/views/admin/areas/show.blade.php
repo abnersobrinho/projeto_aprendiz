@@ -1,8 +1,8 @@
-@extends('layouts.adm')
-
-@include('layouts._nav')
+@extends('layouts.admin.adm')
 
 @section('page_title', 'Detalhes da Área')
+
+@include('layouts._nav')
 
 @section('content')
 

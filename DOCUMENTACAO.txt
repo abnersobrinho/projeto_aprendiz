@@ -1,0 +1,28 @@
+1. ALUNO ENTRA NO SITE:: 
+2. Escolhe um curso -> clica no botão 'SABER MAIS'
+3. É DIRECIONADO PARA A TELA DO CURSO ESCOLHIDO. Esta tela trará as seguintes informações: TITULO DO CURSO; INFORMAÇÕES; SE GRATUITO OU PAGO; SE 
+4. Clicando no botão 'CADASTRE-SE' o aluno será direcionado para a tela de login ou tela de cadastro se ja  estiver logado
+
+* mudar a pergunta de QUAL INSTRUMENTO VC TOCA, PARA VC JÁ TOCA ALGUM INSTRUMENTO? QUAL?
+
+* lembrar de incluir os TERMOS DO PROJETO por causa do voluntariado do monitor
+
+* o monitor deve gerenciar a quantidade de alunos que ele vai ensinar, e informar quando sus turma estiver completa
+
+* criar a figura do PROFESSO ao invés de MONITOR e deixar o monitor para auxiliar o professor.
+
+* limitar os cursos que o aluno pode participar
+
+* colocar infdormação de que é preciso ter instrumento para se inscrever no projeto
+
+* gestão da liberação do aluno pelo pastor
+
+* gestão de cadastro de alunos nas turmas, dando a eles a opção de poder escolher qual turma ele vai participar. 
+
+* O sistema mostra a lista de CURSOS e as turmas que serão formadas.
+
+* avisos: Verificar se algum irmão tem instrumento para vender barato ou doar.
+
+* colocar opção do coordenador enviar mensagem para todos os alunos e o professor enviar mensagem para sua turma.
+
+* as pessoas que estão fora de Valadares ou Caratinga, poderão assistir as aulas que serão postadas no site e uma vez por mês ele vem para assistir a aula presencial

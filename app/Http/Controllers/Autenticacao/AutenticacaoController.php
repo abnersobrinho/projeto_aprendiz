@@ -26,7 +26,7 @@ class AutenticacaoController extends Controller
 
         if(Auth::check() || ($usuario && Hash::check($senha, $usuario->senha))){
             Auth::login($usuario);
-            return redirect(route('dashboard'));
+            return redirect(route('home'));
         }else{
             return redirect(route('login'));
         }

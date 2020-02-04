@@ -12,8 +12,12 @@
 */
 
 Route::get('/', 'Site\SiteController@index')->name('index');
-Route::get('/registrar', 'Admin\UsuarioController@registrar')->name('registrar');
-Route::post('/salvar', 'Admin\UsuarioController@salvar')->name('salvar');
+Route::get('/busca', 'Site\SiteController@busca')->name('busca');
+
+Route::get('site/curso/show/{id}', 'Site\CursoController@show')->name('site.curso.show');
+
+Route::get('/usuario/create', 'Site\UsuarioController@create')->name('site.usuario.create');
+Route::post('/usuario/store', 'Site\UsuarioController@store')->name('site.usuario.store');
 
 Route::get('/login', 'Autenticacao\AutenticacaoController@login')->name('login');
 Route::post('/logar', 'Autenticacao\AutenticacaoController@logar')->name('logar');
@@ -21,13 +25,19 @@ Route::get('/logout', 'Autenticacao\AutenticacaoController@logout')->name('logou
 
 Route::middleware(['auth'])->group(function()
 {
+	Route::get('/home', 'Home\HomeController@index')->name('home');
 	Route::get('/dashboard', 'Admin\DashboardController@dashboard')->name('dashboard');
-
-
-	Route::get('/usuarios', 'Admin\UsuarioController@index')->name('usuario.index');
+	Route::get('/graficos', 'Admin\DashboardController@graficos')->name('graficos');
+	Route::get('/tabelas', 'Admin\DashboardController@tabelas')->name('tabelas');
+	
+	Route::get('/usuario/edit/{id}', 'Site\UsuarioController@edit')->name('site.usuario.edit');
 	Route::get('/usuarios/edit/{id}', 'Admin\UsuarioController@edit')->name('usuario.edit');
-	Route::get('/usuarios/update/{id}', 'Admin\UsuarioController@update')->name('usuario.update');
+	Route::post('/usuario/update/{id}', 'Site\UsuarioController@update')->name('site.usuario.update');
+	Route::post('/usuarios/update/{id}', 'Admin\UsuarioController@update')->name('usuario.update');
+	Route::get('/usuarios', 'Admin\UsuarioController@index')->name('usuario.index');
+	Route::get('/perfil', 'Home\HomeController@perfil')->name('perfil');
 	Route::get('/usuarios/show/{id}', 'Admin\UsuarioController@show')->name('usuario.show');
+	Route::get('/usuarios/destroy/{id}', 'Admin\UsuarioController@destroy')->name('usuario.destroy');
 
 	Route::get('/cidade', 'Admin\CidadeController@index')->name('cidade.index');
 	Route::get('/cidade/edit/{id}', 'Admin\CidadeController@edit')->name('cidade.edit');
@@ -72,9 +82,30 @@ Route::middleware(['auth'])->group(function()
 	Route::get('/cursos/edit/{id}', 'Admin\CursoController@edit')->name('curso.edit');
 	Route::get('/cursos/create', 'Admin\CursoController@create')->name('curso.create');
 	Route::post('/cursos/store', 'Admin\CursoController@store')->name('curso.store');
-	Route::post('/cursos/update/{id}', 'Admin\CursoController@update')->name('curso.update');
+	Route::get('/cursos/update/{id}', 'Admin\CursoController@update')->name('curso.update');
 	Route::get('/cursos/show/{id}', 'Admin\CursoController@show')->name('curso.show');
 	Route::get('/cursos/destroy/{id}', 'Admin\CursoController@destroy')->name('curso.destroy');
 	Route::post('/cursos/buscar', 'Admin\CursoController@buscar')->name('curso.buscar');
+
+	Route::get('/turmas', 'Admin\TurmaController@index')->name('turma.index');
+	Route::get('/turmas/edit/{id}', 'Admin\TurmaController@edit')->name('turma.edit');
+	Route::get('/turmas/create', 'Admin\TurmaController@create')->name('turma.create');
+	Route::post('/turmas/store', 'Admin\TurmaController@store')->name('turma.store');
+	Route::get('/turmas/update/{id}', 'Admin\TurmaController@update')->name('turma.update');
+	Route::get('/turmas/show/{id}', 'Site\TurmaController@show')->name('turma.show');
+	Route::get('/turmas/destroy/{id}', 'Admin\TurmaController@destroy')->name('turma.destroy');
+	Route::post('/turmas/buscar', 'Admin\TurmaController@buscar')->name('turma.buscar');
+
+	Route::post('/comentario/store', 'Site\ComentarioController@store')->name('comentario.store');
+
+	Route::post('/resposta/create', 'Site\RespostaController@create')->name('resposta.create');
+	Route::post('/resposta/store', 'Site\RespostaController@store')->name('resposta.store');
+
+	Route::get('/file', 'Admin\FileController@index')->name('file.index');
+	Route::get('/file/create', 'Admin\FileController@create')->name('file.create');
+	Route::post('/upload', 'Admin\FileController@upload')->name('file.upload');
+	Route::get('/file/download/{id}', 'Admin\FileController@download')->name('file.download');
+	Route::get('/file/destroy/{id}', 'Admin\FileController@destroy')->name('file.destroy');
+
 });
 
